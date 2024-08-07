@@ -50,9 +50,29 @@ WHERE id = (
     FROM sinhvien
 );
 
+CREATE TABLE users (
+	username varchar(50) primary key,
+    password varchar(100) not null,
+	enabled tinyint not null
+);
+
+create table authorities(
+	username varchar(50) not null,
+    authority varchar(50) not null,
+    unique key (username, authority),
+    constraint fk_username foreign key (username) references users(username)
+);
+
+insert into users values 
+	('tung', '{noop}123456789', 1),
+    ('quoc', '{noop}quoc123', 1),
+    ('kiet', '{noop}kiet123', 1);
 
 
-
+insert into authorities values 
+	('tung', 'ROLE_TEACHER'),
+    ('quoc', 'ROLE_MANAGER'),
+    ('kiet', 'ROLE_ADMIN');
 
 
 
