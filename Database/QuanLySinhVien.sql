@@ -63,12 +63,13 @@ create table authorities(
     constraint fk_username foreign key (username) references users(username)
 );
 
+-- DELETE FROM users;
 insert into users values 
-	('tung', '{noop}123456789', 1),
-    ('quoc', '{noop}quoc123', 1),
-    ('kiet', '{noop}kiet123', 1);
+	('tung', '{bcrypt}$2a$12$qPw38qNo2/OlQh56vLxwtO/9iEyWnu4aTVaJhtMU6PmQQUQQTFA4O', 1),
+    ('quoc', '{bcrypt}$2a$12$EEEmfCSWNXwn8KZqaccsm.7UEmWrroVM.0YsLG0cIuEJzfujnoBl2', 1),
+    ('kiet', '{bcrypt}$2a$12$duxVEtgxU/O37RCiE5zMM.wUufQ7uVgGeiAdP/pYlJQveKmzWWAB2', 1);
 
-
+-- DELETE FROM authorities;
 insert into authorities values 
 	('tung', 'ROLE_TEACHER'),
     ('quoc', 'ROLE_MANAGER'),
